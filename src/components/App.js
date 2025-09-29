@@ -28,6 +28,7 @@ function App() {
         <div id="step1" className={step === 1 ? "active" : "hidden"}>
           <h2>Step 1: Personal Info</h2>
           <input
+            id="first_name"
             type="text"
             name="firstName"
             placeholder="First Name"
@@ -36,6 +37,7 @@ function App() {
             required
           />
           <input
+            id="last_name"
             type="text"
             name="lastName"
             placeholder="Last Name"
@@ -51,6 +53,7 @@ function App() {
         <div id="step2" className={step === 2 ? "active" : "hidden"}>
           <h2>Step 2: Car Info</h2>
           <input
+            id="make"
             type="text"
             name="make"
             placeholder="Car Make"
@@ -59,6 +62,7 @@ function App() {
             required
           />
           <input
+            id="model"
             type="text"
             name="model"
             placeholder="Car Model"
