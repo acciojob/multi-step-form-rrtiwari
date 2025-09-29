@@ -6,8 +6,10 @@ function App() {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    make: "",
     model: "",
+    car_price: "",
+    card_info: "",
+    expiry_date: ""
   });
 
   const handleChange = (e) => {
@@ -19,79 +21,89 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
+    console.log("Form submitted:", formData);
   };
 
   return (
     <div className="container">
       <form onSubmit={handleSubmit}>
-        <div id="step1" className={step === 1 ? "active" : "hidden"}>
-          <h2>Step 1: Personal Info</h2>
-          <input
-            id="first_name"
-            type="text"
-            name="firstName"
-            placeholder="First Name"
-            value={formData.firstName}
-            onChange={handleChange}
-            required
-          />
-          <input
-            id="last_name"
-            type="text"
-            name="lastName"
-            placeholder="Last Name"
-            value={formData.lastName}
-            onChange={handleChange}
-            required
-          />
-          <button type="button" onClick={nextStep}>
-            Next
-          </button>
-        </div>
+        {step === 1 && (
+          <div id="step1">
+            <input
+              id="first_name"
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              value={formData.firstName}
+              onChange={handleChange}
+              required
+            />
+            <input
+              id="last_name"
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              value={formData.lastName}
+              onChange={handleChange}
+              required
+            />
+            <button type="button" onClick={nextStep}>Next</button>
+          </div>
+        )}
 
-        <div id="step2" className={step === 2 ? "active" : "hidden"}>
-          <h2>Step 2: Car Info</h2>
-          <input
-            id="make"
-            type="text"
-            name="make"
-            placeholder="Car Make"
-            value={formData.make}
-            onChange={handleChange}
-            required
-          />
-          <input
-            id="model"
-            type="text"
-            name="model"
-            placeholder="Car Model"
-            value={formData.model}
-            onChange={handleChange}
-            required
-          />
-          <button type="button" onClick={prevStep}>
-            Back
-          </button>
-          <button type="button" onClick={nextStep}>
-            Next
-          </button>
-        </div>
+        {step === 2 && (
+          <div id="step2">
+            <input
+              id="model"
+              type="text"
+              name="model"
+              placeholder="Car Model"
+              value={formData.model}
+              onChange={handleChange}
+              required
+            />
+            <input
+              id="car_price"
+              type="number"
+              name="car_price"
+              placeholder="Car Price"
+              value={formData.car_price}
+              onChange={handleChange}
+              required
+            />
+            <button type="button" onClick={prevStep}>Back</button>
+            <button type="button" onClick={nextStep}>Next</button>
+          </div>
+        )}
 
-        <div id="step3" className={step === 3 ? "active" : "hidden"}>
-          <h2>Step 3: Review & Submit</h2>
-          <p>First Name: {formData.firstName}</p>
-          <p>Last Name: {formData.lastName}</p>
-          <p>Car Make: {formData.make}</p>
-          <p>Car Model: {formData.model}</p>
-          <button type="button" onClick={prevStep}>
-            Back
-          </button>
-          <button type="submit">Submit</button>
-        </div>
+        {step === 3 && (
+          <div id="step3">
+            <input
+              id="card_info"
+              type="text"
+              name="card_info"
+              placeholder="Card Information"
+              value={formData.card_info}
+              onChange={handleChange}
+              required
+            />
+            <input
+              id="expiry_date"
+              type="text"
+              name="expiry_date"
+              placeholder="Expiry Date"
+              value={formData.expiry_date}
+              onChange={handleChange}
+              required
+            />
+            <button type="button" onClick={prevStep}>Back</button>
+            <button type="submit">Submit</button>
+          </div>
+        )}
       </form>
     </div>
   );
 }
 
 export default App;
+
