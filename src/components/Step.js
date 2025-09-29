@@ -8,6 +8,20 @@ function Step(props) {
   var prevStep = props.prevStep;
   var handleSubmit = props.handleSubmit;
 
+  function handleNextClick(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    console.log("handleNextClick - before nextStep - step:", step);
+    nextStep();
+    console.log("handleNextClick - after nextStep call");
+  }
+
+  function handlePrevClick(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    console.log("handlePrevClick - before prevStep - step:", step);
+    prevStep();
+    console.log("handlePrevClick - after prevStep call");
+  }
+
   if (step === 1) {
     return (
       <div className="step" id="step1">
@@ -26,7 +40,12 @@ function Step(props) {
           value={formData.last_name}
           onChange={handleChange}
         />
-        <button type="button" onClick={nextStep} id="step1-next">
+        <button
+          type="button"
+          id="step1-next"
+          data-cy="step1-next"
+          onClick={handleNextClick}
+        >
           Next
         </button>
       </div>
@@ -52,10 +71,20 @@ function Step(props) {
           onChange={handleChange}
         />
         <div className="buttons">
-          <button type="button" onClick={prevStep} id="step2-prev">
+          <button
+            type="button"
+            id="step2-prev"
+            data-cy="step2-prev"
+            onClick={handlePrevClick}
+          >
             Previous
           </button>
-          <button type="button" onClick={nextStep} id="step2-next">
+          <button
+            type="button"
+            id="step2-next"
+            data-cy="step2-next"
+            onClick={handleNextClick}
+          >
             Next
           </button>
         </div>
@@ -82,10 +111,15 @@ function Step(props) {
           onChange={handleChange}
         />
         <div className="buttons">
-          <button type="button" onClick={prevStep} id="step3-prev">
+          <button
+            type="button"
+            id="step3-prev"
+            data-cy="step3-prev"
+            onClick={handlePrevClick}
+          >
             Previous
           </button>
-          <button type="submit" id="step3-submit">
+          <button type="submit" id="step3-submit" data-cy="step3-submit">
             Submit
           </button>
         </div>

@@ -14,34 +14,49 @@ function App() {
   });
 
   function handleChange(e) {
-    const id = e.target.id;
-    const value = e.target.value;
+    var id = e.target.id;
+    var value = e.target.value;
     setFormData(function(prev) {
       return Object.assign({}, prev, { [id]: value });
     });
   }
 
-  function nextStep() {
+  function setStepAndExpose(next) {
     setCurrentStep(function(prevStep) {
-      return prevStep + 1;
+      var newStep = typeof next === "function" ? next(prevStep) : next;
+      window.__CURRENT_STEP__ = newStep;
+      try {
+        document.body.setAttribute("data-current-step", String(newStep));
+      } catch (err) {}
+      console.log("step change", prevStep, "->", newStep);
+      return newStep;
+    });
+  }
+
+  function nextStep() {
+    setStepAndExpose(function(prev) {
+      return prev + 1;
     });
   }
 
   function prevStep() {
-    setCurrentStep(function(prevStep) {
-      return prevStep - 1;
+    setStepAndExpose(function(prev) {
+      return prev - 1;
     });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(formData);
+    console.log("Form submitted:", formData);
     alert("Form submitted! Check console for details.");
   }
 
   return (
     <div className="App">
       <h1>Multi-Step Form</h1>
+      <div id="current-step-indicator" data-step={currentStep}>
+        {currentStep}
+      </div>
       <Step
         step={currentStep}
         formData={formData}
@@ -55,5 +70,6 @@ function App() {
 }
 
 export default App;
+
 
 
