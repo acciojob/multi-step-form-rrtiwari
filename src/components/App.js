@@ -1,55 +1,134 @@
 import React, { useState } from "react";
-import Step from "./Step";
 import "../styles/App.css";
 
 function App() {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    first_name: "",
-    last_name: "",
+    firstName: "",
+    lastName: "",
+    make: "",
     model: "",
-    car_price: "",
-    card_info: "",
-    expiry_date: ""
+    carPrice: "",
+    cardInfo: "",
+    expiryDate: "",
   });
 
-  function handleChange(e) {
-    var id = e.target.id;
-    var value = e.target.value;
-    setFormData(function(prev) {
-      return Object.assign({}, prev, { [id]: value });
-    });
-  }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
-  function nextStep() {
-    setCurrentStep(function(prevStep) {
-      return prevStep + 1;
-    });
-  }
+  const nextStep = () => setStep((prev) => prev + 1);
+  const prevStep = () => setStep((prev) => prev - 1);
 
-  function prevStep() {
-    setCurrentStep(function(prevStep) {
-      return prevStep - 1;
-    });
-  }
-
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Form submitted! Check console for details.");
-  }
+    console.log("Form Submitted:", formData);
+    alert("Form submitted successfully!");
+  };
 
   return (
     <div className="App">
-      <h1>Multi-Step Form</h1>
-      <Step
-        step={currentStep}
-        formData={formData}
-        handleChange={handleChange}
-        nextStep={nextStep}
-        prevStep={prevStep}
-        handleSubmit={handleSubmit}
-      />
+      <h2>Car Insurance Form</h2>
+      <form onSubmit={handleSubmit}>
+        {step === 1 && (
+          <div>
+            <label>
+              First Name:
+              <input
+                type="text"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+              />
+            </label>
+            <br />
+            <label>
+              Last Name:
+              <input
+                type="text"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+              />
+            </label>
+            <br />
+            <button type="button" onClick={nextStep}>
+              Next
+            </button>
+          </div>
+        )}
+
+        {step === 2 && (
+          <div>
+            <label>
+              Brand:
+              <input
+                type="text"
+                name="make"
+                value={formData.make}
+                onChange={handleChange}
+              />
+            </label>
+            <br />
+            <label>
+              Model:
+              <input
+                type="text"
+                name="model"
+                value={formData.model}
+                onChange={handleChange}
+              />
+            </label>
+            <br />
+            <label>
+              Car Price:
+              <input
+                type="number"
+                name="carPrice"
+                value={formData.carPrice}
+                onChange={handleChange}
+              />
+            </label>
+            <br />
+            <button type="button" onClick={prevStep}>
+              Previous
+            </button>
+            <button type="button" onClick={nextStep}>
+              Next
+            </button>
+          </div>
+        )}
+
+        {step === 3 && (
+          <div>
+            <label>
+              Card Info:
+              <input
+                type="text"
+                name="cardInfo"
+                value={formData.cardInfo}
+                onChange={handleChange}
+              />
+            </label>
+            <br />
+            <label>
+              Expiry Date:
+              <input
+                type="month"
+                name="expiryDate"
+                value={formData.expiryDate}
+                onChange={handleChange}
+              />
+            </label>
+            <br />
+            <button type="button" onClick={prevStep}>
+              Previous
+            </button>
+            <button type="submit">Submit</button>
+          </div>
+        )}
+      </form>
     </div>
   );
 }

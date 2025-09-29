@@ -1,34 +1,28 @@
+/* App.css */
 .App {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  padding: 30px;
-}
-
-.step {
-  margin: 20px auto;
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
 }
 
 label {
-  text-align: left;
+  display: block;
+  margin-bottom: 10px;
 }
 
 input {
-  padding: 5px;
-  font-size: 16px;
+  width: 100%;
+  padding: 6px;
+  margin-top: 4px;
+  box-sizing: border-box;
 }
 
 button {
-  padding: 8px 12px;
-  margin-top: 10px;
+  margin: 10px 5px 0 0;
+  padding: 6px 12px;
   cursor: pointer;
 }
 
-.buttons {
-  display: flex;
-  justify-content: space-between;
-}
 
