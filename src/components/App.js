@@ -21,27 +21,15 @@ function App() {
     });
   }
 
-  function setStepAndExpose(next) {
-    setCurrentStep(function(prevStep) {
-      var newStep = typeof next === "function" ? next(prevStep) : next;
-      window.__CURRENT_STEP__ = newStep;
-      try {
-        document.body.setAttribute("data-current-step", String(newStep));
-      } catch (err) {}
-      console.log("step change", prevStep, "->", newStep);
-      return newStep;
-    });
-  }
-
   function nextStep() {
-    setStepAndExpose(function(prev) {
-      return prev + 1;
+    setCurrentStep(function(prevStep) {
+      return prevStep + 1;
     });
   }
 
   function prevStep() {
-    setStepAndExpose(function(prev) {
-      return prev - 1;
+    setCurrentStep(function(prevStep) {
+      return prevStep - 1;
     });
   }
 
@@ -54,9 +42,6 @@ function App() {
   return (
     <div className="App">
       <h1>Multi-Step Form</h1>
-      <div id="current-step-indicator" data-step={currentStep}>
-        {currentStep}
-      </div>
       <Step
         step={currentStep}
         formData={formData}
@@ -70,6 +55,3 @@ function App() {
 }
 
 export default App;
-
-
-
