@@ -8,51 +8,42 @@ function App() {
     lastName: "",
     make: "",
     model: "",
-    carPrice: "",
-    cardInfo: "",
-    expiryDate: "",
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const nextStep = () => setStep((prev) => prev + 1);
-  const prevStep = () => setStep((prev) => prev - 1);
+  const nextStep = () => setStep(step + 1);
+  const prevStep = () => setStep(step - 1);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Submitted:", formData);
-    alert("Form submitted successfully!");
+    console.log("Form Data:", formData);
   };
 
   return (
-    <div className="App">
-      <h2>Car Insurance Form</h2>
+    <div className="container">
       <form onSubmit={handleSubmit}>
         {step === 1 && (
-          <div>
-            <label>
-              First Name:
-              <input
-                type="text"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleChange}
-              />
-            </label>
-            <br />
-            <label>
-              Last Name:
-              <input
-                type="text"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleChange}
-              />
-            </label>
-            <br />
+          <div id="step1">
+            <h2>Step 1: Personal Info</h2>
+            <input
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              value={formData.firstName}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              value={formData.lastName}
+              onChange={handleChange}
+              required
+            />
             <button type="button" onClick={nextStep}>
               Next
             </button>
@@ -60,39 +51,26 @@ function App() {
         )}
 
         {step === 2 && (
-          <div>
-            <label>
-              Brand:
-              <input
-                type="text"
-                name="make"
-                value={formData.make}
-                onChange={handleChange}
-              />
-            </label>
-            <br />
-            <label>
-              Model:
-              <input
-                type="text"
-                name="model"
-                value={formData.model}
-                onChange={handleChange}
-              />
-            </label>
-            <br />
-            <label>
-              Car Price:
-              <input
-                type="number"
-                name="carPrice"
-                value={formData.carPrice}
-                onChange={handleChange}
-              />
-            </label>
-            <br />
+          <div id="step2">
+            <h2>Step 2: Car Info</h2>
+            <input
+              type="text"
+              name="make"
+              placeholder="Car Make"
+              value={formData.make}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="text"
+              name="model"
+              placeholder="Car Model"
+              value={formData.model}
+              onChange={handleChange}
+              required
+            />
             <button type="button" onClick={prevStep}>
-              Previous
+              Back
             </button>
             <button type="button" onClick={nextStep}>
               Next
@@ -101,29 +79,14 @@ function App() {
         )}
 
         {step === 3 && (
-          <div>
-            <label>
-              Card Info:
-              <input
-                type="text"
-                name="cardInfo"
-                value={formData.cardInfo}
-                onChange={handleChange}
-              />
-            </label>
-            <br />
-            <label>
-              Expiry Date:
-              <input
-                type="month"
-                name="expiryDate"
-                value={formData.expiryDate}
-                onChange={handleChange}
-              />
-            </label>
-            <br />
+          <div id="step3">
+            <h2>Step 3: Review & Submit</h2>
+            <p>First Name: {formData.firstName}</p>
+            <p>Last Name: {formData.lastName}</p>
+            <p>Car Make: {formData.make}</p>
+            <p>Car Model: {formData.model}</p>
             <button type="button" onClick={prevStep}>
-              Previous
+              Back
             </button>
             <button type="submit">Submit</button>
           </div>
@@ -134,3 +97,4 @@ function App() {
 }
 
 export default App;
+
