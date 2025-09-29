@@ -26,7 +26,7 @@ function Step(props) {
           value={formData.last_name}
           onChange={handleChange}
         />
-        <button type="button" onClick={nextStep}>
+        <button type="button" onClick={nextStep} id="step1-next">
           Next
         </button>
       </div>
@@ -52,10 +52,10 @@ function Step(props) {
           onChange={handleChange}
         />
         <div className="buttons">
-          <button type="button" onClick={prevStep}>
+          <button type="button" onClick={prevStep} id="step2-prev">
             Previous
           </button>
-          <button type="button" onClick={nextStep}>
+          <button type="button" onClick={nextStep} id="step2-next">
             Next
           </button>
         </div>
@@ -82,10 +82,12 @@ function Step(props) {
           onChange={handleChange}
         />
         <div className="buttons">
-          <button type="button" onClick={prevStep}>
+          <button type="button" onClick={prevStep} id="step3-prev">
             Previous
           </button>
-          <button type="submit">Submit</button>
+          <button type="submit" id="step3-submit">
+            Submit
+          </button>
         </div>
       </form>
     );

@@ -16,15 +16,21 @@ function App() {
   function handleChange(e) {
     const id = e.target.id;
     const value = e.target.value;
-    setFormData({ ...formData, [id]: value });
+    setFormData(function(prev) {
+      return Object.assign({}, prev, { [id]: value });
+    });
   }
 
   function nextStep() {
-    setCurrentStep((prevStep) => prevStep + 1);
+    setCurrentStep(function(prevStep) {
+      return prevStep + 1;
+    });
   }
 
   function prevStep() {
-    setCurrentStep((prevStep) => prevStep - 1);
+    setCurrentStep(function(prevStep) {
+      return prevStep - 1;
+    });
   }
 
   function handleSubmit(e) {
@@ -49,4 +55,5 @@ function App() {
 }
 
 export default App;
+
 
