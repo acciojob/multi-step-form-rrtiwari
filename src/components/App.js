@@ -20,11 +20,11 @@ function App() {
   }
 
   function nextStep() {
-    setCurrentStep(currentStep + 1);
+    setCurrentStep((prevStep) => prevStep + 1);
   }
 
   function prevStep() {
-    setCurrentStep(currentStep - 1);
+   setCurrentStep((prevStep) => prevStep - 1);
   }
 
   function handleSubmit(e) {
