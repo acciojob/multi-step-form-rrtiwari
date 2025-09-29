@@ -1,6 +1,6 @@
-import "./../styles/App.css";
 import React, { useState } from "react";
 import Step from "./Step";
+import "./App.css";
 
 function App() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -10,7 +10,7 @@ function App() {
     model: "",
     car_price: "",
     card_info: "",
-    expiry_date: "",
+    expiry_date: ""
   });
 
   function handleChange(e) {
@@ -24,12 +24,12 @@ function App() {
   }
 
   function prevStep() {
-   setCurrentStep((prevStep) => prevStep - 1);
+    setCurrentStep((prevStep) => prevStep - 1);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    console.log(formData);
     alert("Form submitted! Check console for details.");
   }
 
@@ -49,3 +49,4 @@ function App() {
 }
 
 export default App;
+
