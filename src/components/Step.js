@@ -11,7 +11,7 @@ function Step(props) {
   function renderStep() {
     if (step === 1) {
       return (
-        <div className="step">
+        <div className="step" id="step1">
           <h2>Step 1: Personal Info</h2>
           <label htmlFor="first_name">First Name:</label>
           <input
@@ -36,7 +36,7 @@ function Step(props) {
 
     if (step === 2) {
       return (
-        <div className="step">
+        <div className="step" id="step2">
           <h2>Step 2: Car Info</h2>
           <label htmlFor="model">Car Model:</label>
           <input
@@ -66,7 +66,7 @@ function Step(props) {
 
     if (step === 3) {
       return (
-        <div className="step">
+        <div className="step" id="step3">
           <h2>Step 3: Payment Info</h2>
           <label htmlFor="card_info">Card Info:</label>
           <input
