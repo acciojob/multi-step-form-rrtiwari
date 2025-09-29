@@ -1,1 +1,34 @@
+.App {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 30px;
+}
+
+.step {
+  margin: 20px auto;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  text-align: left;
+}
+
+input {
+  padding: 5px;
+  font-size: 16px;
+}
+
+button {
+  padding: 8px 12px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
 
