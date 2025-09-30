@@ -11,7 +11,7 @@ function Step({
   return (
     <form onSubmit={handleSubmit}>
       {step === 1 && (
-        <div id="step1" data-testid="step1">
+        <div id="step1">
           <input
             id="first_name"
             name="first_name"
@@ -33,7 +33,7 @@ function Step({
       )}
 
       {step === 2 && (
-        <div id="step2" data-testid="step2">
+        <div id="step2">
           <input
             id="model"
             name="model"
@@ -58,7 +58,7 @@ function Step({
       )}
 
       {step === 3 && (
-        <div id="step3" data-testid="step3">
+        <div id="step3">
           <input
             id="card_info"
             name="card_info"

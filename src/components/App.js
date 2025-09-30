@@ -10,11 +10,12 @@ function App() {
     model: "",
     car_price: "",
     card_info: "",
-    expiry_date: "",
+    expiry_date: ""
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const nextStep = () => setStep((prev) => prev + 1);
@@ -22,12 +23,11 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Submitted:", formData);
-    alert("Form Submitted! Check console for data.");
+    console.log("formData");
   };
 
   return (
-    <div className="form-container">
+    <div className="app">
       <Step
         step={step}
         formData={formData}
@@ -41,6 +41,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
