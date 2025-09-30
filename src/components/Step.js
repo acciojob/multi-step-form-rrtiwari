@@ -11,18 +11,18 @@ function Step({
   return (
     <form onSubmit={handleSubmit}>
       {step === 1 && (
-        <div id="step1">
+        <div id="step1" data-testid="step1">
           <input
             id="first_name"
-            name="firstName"
-            value={formData.firstName}
+            name="first_name"
+            value={formData.first_name}
             onChange={handleChange}
             placeholder="First Name"
           />
           <input
             id="last_name"
-            name="lastName"
-            value={formData.lastName}
+            name="last_name"
+            value={formData.last_name}
             onChange={handleChange}
             placeholder="Last Name"
           />
@@ -31,8 +31,9 @@ function Step({
           </button>
         </div>
       )}
+
       {step === 2 && (
-        <div id="step2">
+        <div id="step2" data-testid="step2">
           <input
             id="model"
             name="model"
@@ -55,8 +56,9 @@ function Step({
           </button>
         </div>
       )}
+
       {step === 3 && (
-        <div id="step3">
+        <div id="step3" data-testid="step3">
           <input
             id="card_info"
             name="card_info"
