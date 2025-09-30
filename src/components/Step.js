@@ -1,39 +1,84 @@
 import React from "react";
 
-function Step({ step, data, handleChange, nextStep, prevStep }) {
-  if (step === 1) {
-    return (
-      <div id="step1">
-        <input id="first_name" value={data.first_name} onChange={handleChange} />
-        <input id="last_name" value={data.last_name} onChange={handleChange} />
-        <button type="button" id="next" onClick={nextStep}>Next</button>
-      </div>
-    );
-  }
-
-  if (step === 2) {
-    return (
-      <div id="step2">
-        <input id="model" value={data.model} onChange={handleChange} />
-        <input id="car_price" value={data.car_price} onChange={handleChange} />
-        <button type="button" id="prev" onClick={prevStep}>Previous</button>
-        <button type="button" id="next" onClick={nextStep}>Next</button>
-      </div>
-    );
-  }
-
-  if (step === 3) {
-    return (
-      <div id="step3">
-        <input id="card_info" value={data.card_info} onChange={handleChange} />
-        <input id="expiry_date" value={data.expiry_date} onChange={handleChange} />
-        <button type="button" id="prev" onClick={prevStep}>Previous</button>
-        <button type="submit" id="submit">Submit</button>
-      </div>
-    );
-  }
-
-  return null;
+function Step({
+  step,
+  formData,
+  handleChange,
+  nextStep,
+  prevStep,
+  handleSubmit,
+}) {
+  return (
+    <form onSubmit={handleSubmit}>
+      {step === 1 && (
+        <div id="step1">
+          <input
+            id="first_name"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+            placeholder="First Name"
+          />
+          <input
+            id="last_name"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+            placeholder="Last Name"
+          />
+          <button type="button" onClick={nextStep}>
+            Next
+          </button>
+        </div>
+      )}
+      {step === 2 && (
+        <div id="step2">
+          <input
+            id="model"
+            name="model"
+            value={formData.model}
+            onChange={handleChange}
+            placeholder="Car Model"
+          />
+          <input
+            id="car_price"
+            name="car_price"
+            value={formData.car_price}
+            onChange={handleChange}
+            placeholder="Car Price"
+          />
+          <button type="button" onClick={prevStep}>
+            Previous
+          </button>
+          <button type="button" onClick={nextStep}>
+            Next
+          </button>
+        </div>
+      )}
+      {step === 3 && (
+        <div id="step3">
+          <input
+            id="card_info"
+            name="card_info"
+            value={formData.card_info}
+            onChange={handleChange}
+            placeholder="Card Info"
+          />
+          <input
+            id="expiry_date"
+            name="expiry_date"
+            value={formData.expiry_date}
+            onChange={handleChange}
+            placeholder="Expiry Date"
+          />
+          <button type="button" onClick={prevStep}>
+            Previous
+          </button>
+          <button type="submit">Submit</button>
+        </div>
+      )}
+    </form>
+  );
 }
 
 export default Step;
